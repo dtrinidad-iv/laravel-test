@@ -67,4 +67,11 @@ class ProductController extends Controller
     {
         return view ('specials');
     }
+
+    public function allProducts()
+    {
+      $products = Product::all();
+
+      return response()->json($products);
+    }
 }
