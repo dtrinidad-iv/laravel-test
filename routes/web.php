@@ -13,7 +13,7 @@
 
 Route::view('/', 'welcome');
 
-Route::get('products', 'ProductController@indx');
+Route::get('products', 'ProductController@index');
 
 Route::get('cart/{id}', 'ProductController@cart')->name('cart');
 
