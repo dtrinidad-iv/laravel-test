@@ -11,14 +11,17 @@ Again, there isn't anything "tricky" about this repo, the application should run
 
 ## Basic Tasks
 
-- [ ] Fork this repo into your Github account
-- [ ] Get application up and running.
-- [ ] Fix this list so it justify to the left without losing the format of the rest of page.
-- [ ] Go to route /products and tell me specifically what is wrong, if anything, and fix it.
-- [ ] Create a resourceful Controller for an object called Review.
-- [ ] Add a route that points to your Review Controller and have it return a new blade view
-- [ ] Can you explain to me why the route /specials is failing and fix it.
-- [ ] What version of Laravel is this application using?
+- [x] Fork this repo into your Github account
+- [x] Get application up and running.
+- [x] Fix this list so it justify to the left without losing the format of the rest of page.
+- [x] Go to route /products and tell me specifically what is wrong, if anything, and fix it.
+- * typo ProductController@indx, need to change it to ProductController@index in routes/web.php
+- [x] Create a resourceful Controller for an object called Review.
+- [x] Add a route that points to your Review Controller and have it return a new blade view
+- [x] Can you explain to me why the route /specials is failing and fix it.
+- * The GET method is not supported for this route. Supported methods: POST. (so I change the pointed route to ::get)
+- [x] What version of Laravel is this application using?
+- * Laravel 5.8
 
 ## Simple Tasks
 
@@ -34,12 +37,12 @@ Again, there isn't anything "tricky" about this repo, the application should run
 ## Advanced Tasks
 
 - [ ] Sign your commits using a GPG key.
-- [ ] When adding additional items to the cart of something that had already been added, it is only registering a quantity of 1. Fix this. 
+- [ ] When adding additional items to the cart of something that had already been added, it is only registering a quantity of 1. Fix this.
 - [ ] Add VueJS to project and make the `Add to cart` a Vue Component that keeps you on the page when adding products to your cart.
 - [ ] Upgrade the IDs for products to be UUIDs. Assure everything still works, adding to cart, purchase, and reviews.
-- [ ] Add a pivot table to allow users to leave comments of products. No need to create the interfaces with this, as long as it works in tinker. 
+- [ ] Add a pivot table to allow users to leave comments of products. No need to create the interfaces with this, as long as it works in tinker.
 
 ## Submit your repo
 
-Please copy your `.env` file to `.env.app` and commit it to your repo. Add any answers to the README file. 
-ZIP up your repo and email it to me. 
+Please copy your `.env` file to `.env.app` and commit it to your repo. Add any answers to the README file.
+ZIP up your repo and email it to me.
