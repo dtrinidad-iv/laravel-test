@@ -47,7 +47,10 @@ class ProductController extends Controller
 
         $cart = session()->get('cart');
 
-        $quantity = $cart[ $id ][ 'quantity' ] ?? 1;
+        if(isset($cart[ $id ][ 'quantity' ]))
+          $quantity = $cart[ $id ][ 'quantity' ] + 1;
+        else
+          $quantity = 1;
 
         $cart[ $id ] = [
             'name'     => $product->name,
