@@ -11,18 +11,24 @@
 |
 */
 
-Route::view('/', 'welcome');
+Route::redirect('/', '/products');
 
-Route::get('products', 'ProductController@index');
-
-Route::get('reviews', 'ReviewController@index');
-
-Route::get('cart/{id}', 'ProductController@cart')->name('cart');
-
-Route::get('checkout', 'ProductController@checkout')->name('checkout');
-
-Route::get('specials', 'ProductController@specials');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware'=>['auth']], function (){
+
+  Route::get('products', 'ProductController@index');
+
+  Route::get('reviews', 'ReviewController@index');
+
+  Route::get('cart/{id}', 'ProductController@cart')->name('cart');
+
+  Route::get('checkout', 'ProductController@checkout')->name('checkout');
+
+  Route::get('specials', 'ProductController@specials');
+
+
+});
