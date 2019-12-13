@@ -42,7 +42,7 @@
             }
 
             .content {
-                text-align: center;
+                text-align: left;
             }
 
             .title {
@@ -136,7 +136,7 @@
             <div>
                 <h2>Submit your work</h2>
                 <p>
-                    Please copy your `.env` file to `.env.app` and commit it to your repo. Add any answers to the README file. ZIP up your repo and email it to me. 
+                    Please copy your `.env` file to `.env.app` and commit it to your repo. Add any answers to the README file. ZIP up your repo and email it to me.
 
                 </p>
             </div>
