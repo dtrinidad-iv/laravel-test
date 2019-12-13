@@ -21,7 +21,7 @@ Route::get('cart/{id}', 'ProductController@cart')->name('cart');
 
 Route::get('checkout', 'ProductController@checkout')->name('checkout');
 
-Route::post('specials', 'ProductController@specials');
+Route::get('specials', 'ProductController@specials');
 
 Auth::routes();
 
