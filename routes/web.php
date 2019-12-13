@@ -15,6 +15,8 @@ Route::view('/', 'welcome');
 
 Route::get('products', 'ProductController@index');
 
+Route::get('reviews', 'ReviewController@index');
+
 Route::get('cart/{id}', 'ProductController@cart')->name('cart');
 
 Route::get('checkout', 'ProductController@checkout')->name('checkout');
