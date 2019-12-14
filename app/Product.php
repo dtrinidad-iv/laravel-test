@@ -27,4 +27,9 @@ class Product extends Model
     {
         return 'string';
     }
+
+    public function comments()
+    {
+      return $this->belongsToMany('App\Comment');
+    }
 }
