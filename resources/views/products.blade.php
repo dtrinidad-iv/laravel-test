@@ -3,20 +3,27 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">Products</div>
-                    <div class="float-right">
-                        <a href="{{ route('checkout') }}">
-                            <button type="button" class="btn btn-secondary">
-                                View Cart
-                            </button>
-                        </a>
-                    </div>
+
                     <div class="card-body">
+                      <div class="pull-right">
+
+                          <a href="{{ route('checkout') }}">
+                              <button type="button" class="btn btn-secondary">
+                                  View Cart
+                              </button>
+                          </a>
+                      </div>
+                      <br>
                         @if (session('status'))
-                            <div class="alert alert-success" role="alert">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ session('status') }}
+
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
                         @endif
 
@@ -31,18 +38,8 @@
                                 <div class="col-2"> Price</div>
                             </div>
                             @foreach ($products as $product)
-                                <div class="row">
-                                    <div class="col-2"><img src="{{ asset('imgs/image'.rand(1,5).'.jpg') }}"
-                                                            alt="{{ $product->name }}"></div>
-                                    <div class="col-4">{{ $product->name }}</div>
-                                    <div class="col-4">{{ $product->description }}</div>
-                                    <div class="col-2">
-                                        ${{ number_format($product->price/100, 2, '.', ' ') }} <br>
-                                        <a href="{{ route('cart', [$product->id]) }}">
-                                            <button type="button" class="btn btn-primary">Add to Cart</button>
-                                        </a>
-                                    </div>
-                                </div>
+                              <hr>
+                              <add-to-cart :product="{{$product}}"></add-to-cart>
                             @endforeach
                         @endif
                     </div>
