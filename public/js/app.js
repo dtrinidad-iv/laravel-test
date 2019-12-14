@@ -1715,11 +1715,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['product'],
+  props: ['products'],
+  data: function data() {
+    return {
+      is_added_product: false
+    };
+  },
   methods: {
     getRandomImage: function getRandomImage() {
       return '/imgs/image' + (Math.floor(Math.random() * 5) + 1) + '.jpg';
+    },
+    addToCart: function addToCart(id) {
+      var _this = this;
+
+      axios.get('/cart/' + id).then(function (response) {
+        if (response.data == 'success') {
+          _this.is_added_product = true;
+        }
+
+        setTimeout(function () {
+          _this.is_added_product = false;
+        }, 2000);
+      });
     }
   }
 });
@@ -37151,32 +37184,96 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-2" }, [
-      _c("img", { attrs: { src: _vm.getRandomImage(), alt: _vm.product.name } })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-4" }, [_vm._v(_vm._s(_vm.product.name))]),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-4" }, [
-      _vm._v(_vm._s(_vm.product.description))
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-2" }, [
-      _vm._v("\n        $" + _vm._s(_vm.product.price)),
-      _c("br"),
+  return _c(
+    "div",
+    [
+      _vm.is_added_product
+        ? _c(
+            "div",
+            {
+              staticClass: "alert alert-success alert-dismissible fade show",
+              attrs: { role: "alert" }
+            },
+            [
+              _vm._v("\n      Product added to cart successfully\n      "),
+              _vm._m(0)
+            ]
+          )
+        : _vm._e(),
       _vm._v(" "),
-      _c("a", { attrs: { href: "/cart/" + _vm.product.id } }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { type: "button" } },
-          [_vm._v("Add to Cart")]
-        )
-      ])
-    ])
-  ])
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._l(_vm.products, function(product) {
+        return _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-2" }, [
+            _c("img", {
+              attrs: { src: _vm.getRandomImage(), alt: product.name }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-4" }, [_vm._v(_vm._s(product.name))]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-4" }, [
+            _vm._v(_vm._s(product.description))
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-2" }, [
+            _vm._v("\n          $" + _vm._s(product.price)),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.addToCart(product.id)
+                  }
+                }
+              },
+              [_vm._v("Add to Cart")]
+            )
+          ])
+        ])
+      })
+    ],
+    2
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "alert",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-2" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-4" }, [_vm._v(" Name")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-4" }, [_vm._v(" Desc.")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-2" }, [_vm._v(" Price")])
+    ])
+  }
+]
 render._withStripped = true
 
 

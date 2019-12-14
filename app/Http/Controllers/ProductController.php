@@ -17,7 +17,7 @@ class ProductController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth','verified']);
+        $this->middleware(['auth','verified'])->except('cart');
     }
     public function index()
     {
@@ -60,11 +60,11 @@ class ProductController extends Controller
 
         session()->put('cart', $cart);
 
-        return redirect()->back()->with('status', 'Product added to cart successfully');
+        return 'success';
     }
 
     public function checkout()
-    {
+    { 
         return view('checkout', ['items' => session()->get('cart')]);
     }
 

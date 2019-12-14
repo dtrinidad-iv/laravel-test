@@ -17,6 +17,7 @@ Route::redirect('/', '/products');
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('cart/{id}', 'ProductController@cart');
 
 Route::group(['middleware'=>['auth']], function (){
 
@@ -24,7 +25,7 @@ Route::group(['middleware'=>['auth']], function (){
 
   Route::get('reviews', 'ReviewController@index');
 
-  Route::get('cart/{id}', 'ProductController@cart')->name('cart');
+  // Route::get('cart/{id}', 'ProductController@cart')->name('cart');
 
   Route::get('checkout', 'ProductController@checkout')->name('checkout');
 
